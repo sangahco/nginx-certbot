@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  certbot:
+    build: .
+    image: nginx/certbot
+    ports:
+    - "443:443"
+    - "80:80"
+    volumes:
+    - ./www:/usr/share/nginx/html
+    - ./conf.d:/etc/nginx/conf.d
+    - ./certs:/etc/letsencrypt
+    environment:
+    - LETSENCRYPT_HOST=dev.sangah.com
+    - LETSENCRYPT_EMAIL=test@emawind.com
