@@ -4,6 +4,9 @@ services:
   certbot:
     build: .
     image: nginx/certbot
+    ports:
+    - "80:80"
+    #- "443:443"
     volumes:
     - ${CERTBOT_CERTS_PATH}:/etc/letsencrypt
     - ${CERTBOT_WEBROOT}:/usr/share/nginx/html
