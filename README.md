@@ -1,4 +1,4 @@
-# Generate Certification With LetsEncrypt using Docker
+# Generate SSL Certificates With LetsEncrypt using Docker
 
 ## Configuration
 
