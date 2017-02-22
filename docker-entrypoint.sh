@@ -10,7 +10,6 @@ echo "- host:                 ${CERTBOT_HOST}"
 echo "- email:                ${CERTBOT_EMAIL}"
 echo "- standalone mode:      ${CERTBOT_STANDALONE}"
 echo "- certificate location: ${CERTBOT_CERTS_PATH}"
-echo "- web root location:    ${CERTBOT_WEBROOT}"
 
 if [ $# -eq 0 ]; then
     exec /bin/sh /certbot-auto certonly \

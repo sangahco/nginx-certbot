@@ -7,12 +7,10 @@ services:
     - ${CERTBOT_CERTS_PATH}:/etc/letsencrypt
     - ${CERTBOT_WEBROOT}:/usr/share/nginx/html
     environment:
+    - CERTBOT_STANDALONE=false
     - CERTBOT_HOST
     - CERTBOT_EMAIL
-    - CERTBOT_STANDALONE
     - CERTBOT_CERTS_PATH
-    - CERTBOT_WEBROOT
-    #command: ["nginx", "-g", "daemon off;"]
 
 volumes: 
   www:
