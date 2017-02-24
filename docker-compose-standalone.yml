@@ -2,8 +2,8 @@ version: "2"
 
 services:
   certbot:
-    build: .
-    image: nginx/certbot
+    build: certbot
+    image: nginx-certbot
     ports:
     - "80:80"
     volumes:
