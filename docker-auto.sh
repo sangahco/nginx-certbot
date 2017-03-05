@@ -49,32 +49,31 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-for i in "$@"
-do
-case $i in
-    --prod)
-        CONF_ARG="-f docker-compose-prod.yml"
-        shift
-        ;;
-    --dev)
-        CONF_ARG="-f docker-compose.yml"
-        shift
-        ;;
-    --prod-standalone)
-        CONF_ARG="-f docker-compose-prod-standalone.yml"
-        shift
-        ;;
-    --dev-standalone)
-        CONF_ARG="-f docker-compose-standalone.yml"
-        shift
-        ;;
-    --help|-h)
-        usage
-        exit 1
-        ;;
-    *)
-        ;;
-esac
+for i in "$@"; do
+    case $i in
+        --prod)
+            CONF_ARG="-f docker-compose-prod.yml"
+            shift
+            ;;
+        --dev)
+            CONF_ARG="-f docker-compose.yml"
+            shift
+            ;;
+        --prod-standalone)
+            CONF_ARG="-f docker-compose-prod-standalone.yml"
+            shift
+            ;;
+        --dev-standalone)
+            CONF_ARG="-f docker-compose-standalone.yml"
+            shift
+            ;;
+        --help|-h)
+            usage
+            exit 1
+            ;;
+        *)
+            ;;
+    esac
 done
 
 echo "Arguments: $CONF_ARG"
