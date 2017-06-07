@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.11.0
 MAINTAINER Emanuele Disco <emanuele.disco@gmail.com>
 
 RUN apt-get update && apt-get -y install \
