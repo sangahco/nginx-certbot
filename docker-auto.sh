@@ -95,7 +95,11 @@ done
 echo "Arguments: $CONF_ARG"
 echo "Command: $@"
 
-if [ "$1" == "up" ]; then
+if [ "$1" == "login" ]; then
+    docker login $REGISTRY_URL
+    exit 0
+
+elif [ "$1" == "up" ]; then
     docker-compose $CONF_ARG pull
     docker-compose $CONF_ARG build --pull
     docker-compose $CONF_ARG up -d --remove-orphans
