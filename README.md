@@ -47,3 +47,23 @@ Run the service with the following command, replacing the host and email accordi
 
 After the process is terminated certificates will be generated inside the folder
 configured with the variable `CERTBOT_CERTS_PATH`.
+
+
+## Note About Registry SSL Certificates
+
+We use this service for creating SSL certificates for our Docker registry as well.
+The first time we generate certificates for the registry might not end well.
+This is because this service actually need the registry up and running and if docker has been started with default settings,
+it will try to pull this service using ssl, but our registry doesn't have a valid certificate yet so it will throw an error.
+
+### The Solution
+
+We tell to the docker engine that our service is insecure. The reference is here => https://docs.docker.com/registry/insecure/.
+
+Create a file `daemon.json` in `/etc/docker` folder and put the following content changing the registry url with the right one:
+
+    {
+        "insecure-registries" : ["dev.sangah.com:5043"]
+    }
+
+Restart the docker service, and now when we try to use this service it will pull the image correctly from our registry.
