@@ -11,7 +11,6 @@ services:
     - CERTBOT_STANDALONE=true
     - CERTBOT_HOST
     - CERTBOT_EMAIL
-    - CERTBOT_CERTS_PATH
 
 volumes: 
   www:
