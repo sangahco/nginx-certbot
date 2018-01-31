@@ -86,6 +86,7 @@ elif [ "$1" == "up" ]; then
     --env "CERTBOT_WEBROOT=${CERTBOT_WEBROOT}" \
     --env "CERTBOT_HOST=${CERTBOT_HOST}" \
     --env "CERTBOT_EMAIL=${CERTBOT_EMAIL}" \
+    --detach=true \
     ${CONF_ARG} \
     $REGISTRY_URL/nginx-certbot > $FB_CONTAINER_ID_FILE
     exit 0
