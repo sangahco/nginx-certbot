@@ -90,4 +90,9 @@ elif [ "$1" == "up" ]; then
     $REGISTRY_URL/nginx-certbot > $FB_CONTAINER_ID_FILE
     exit 0
 
+elif [ "$1" == "logs" ]; then
+    shift
+    docker logs -f --tail 200 $FB_DID
+    exit 0
+    
 fi
