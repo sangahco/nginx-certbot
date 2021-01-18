@@ -1,16 +1,13 @@
-FROM nginx:1.11.0
-MAINTAINER Emanuele Disco <emanuele.disco@gmail.com>
+FROM certbot/certbot:v1.11.0
+LABEL maintainer="Emanuele Disco <emanuele.disco@sangah.com>"
 
-RUN apt-get update && apt-get -y install \
-    wget \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /usr/share/nginx/html
+RUN mkdir -p /run/nginx
 
-RUN set -xe \
-    && wget https://dl.eff.org/certbot-auto \
-    && chmod a+x /certbot-auto \
-    && /bin/sh certbot-auto --quiet --os-packages-only
+RUN apk update
+RUN apk add nginx
+COPY ./nginx/default.conf /etc/nginx/conf.d
 
-COPY ./docker-entrypoint.sh ./entrypoint.sh
+COPY ./docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

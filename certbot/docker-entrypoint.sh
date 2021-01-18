@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 if [ "$CERTBOT_STANDALONE" == "true" ]; then
@@ -11,7 +11,7 @@ echo "- email:                ${CERTBOT_EMAIL}"
 echo "- standalone mode:      ${CERTBOT_STANDALONE}"
 
 if [ $# -eq 0 ]; then
-    exec /bin/sh /certbot-auto certonly \
+    certbot certonly \
         --expand \
         --non-interactive \
         --agree-tos \
